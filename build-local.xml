@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="SimpleApp">
+    <target name="clean">
+        <delete includeemptydirs="true">
+            <fileset dir="build" includes="**/*" />
+        </delete>
+    	<delete dir="build/src-copy" />
+    	<delete dir="build/test" />
+    </target>
+	<target name="coverage" depends="clean">
+		<delete dir="build/src-copy" />
+		<mkdir dir="build/src-copy" />
+		<exec executable="asset/lib/jscoverage/jscoverage">
+	        <arg value="app/backbone-require" />
+	        <arg value="build/src-copy" />
+	    </exec>
+	</target>
+	<target name="test" depends="coverage">
+		<delete dir="build/test/report" />
+		<mkdir dir="build/test/report" />
+		<mkdir dir="build/test/report/cobertura" />
+		<mkdir dir="build/test/report/junit" />
+		<exec executable="asset/lib/phantomjs/phantomjs" failonerror="true">
+            <arg value="test/run-jasmine.js" />
+            <arg value="test/phantom.html" />
+        </exec>
+	</target>
+</project>
