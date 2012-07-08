@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Jasmine Test</title>
+<link rel="stylesheet" type="text/css" href="../asset/css/jasmine.css" />
+
+<script src="../asset/js/jquery-1.7.2.js"></script>
+<script src="../asset/js/jasmine.js"></script>
+<script src="../asset/js/jasmine-html.js"></script>
+
+<script src="../asset/js/sinon-1.3.4.js"></script>
+<script src="../asset/js/jasmine-sinon.js"></script>
+<script src="../asset/js/jasmine-jquery.js"></script>
+
+
+<script src="../asset/js/require.js"></script>
+</head>
+<body>
+<script>
+require.config({
+    baseUrl: "../app/backbone-require",
+    paths: {
+        "test": "../../test",
+        "spec": "../../test/spec",
+        "fixture": "../../test/fixture",
+        
+        "jquery": "../../asset/js/jquery-1.7.2",
+        "underscore" : "../../asset/js/underscore",
+        "backbone": "../../asset/js/backbone",
+        "text": "../../asset/js/text"
+    }
+});
+
+require([
+    "test/allSuite"
+], function () {
+    jasmine.getEnv().addReporter(new jasmine.HtmlReporter());
+    jasmine.getEnv().execute();
+});
+</script>
+</body>
+</html>
