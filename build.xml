@@ -26,5 +26,5 @@
             <arg value="test/phantom.html" />
         </exec>
 	</target>
-	<target name="install" depends="clean, coverage, test" />
+	<target name="install" />
 </project>

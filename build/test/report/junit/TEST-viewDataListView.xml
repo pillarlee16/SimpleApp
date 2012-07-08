@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+<testsuite name="view.DataListView" errors="0" tests="1" failures="0" time="0.009" timestamp="2012-07-08T17:51:39">
+  <testcase classname="view.DataListView" name="객체가 정상적으로 생성된다." time="0.001"></testcase>
+</testsuite>
+<testsuite name="view.DataListView.initialize" errors="0" tests="1" failures="0" time="0.006" timestamp="2012-07-08T17:51:39">
+  <testcase classname="view.DataListView.initialize" name="collection에 add 이벤트가 발생하면 addRecord가 호출된다." time="0.006"></testcase>
+</testsuite>
+<testsuite name="view.DataListView.addRecord" errors="0" tests="1" failures="0" time="0.002" timestamp="2012-07-08T17:51:39">
+  <testcase classname="view.DataListView.addRecord" name="tbody에 tr이 추가된다." time="0.002"></testcase>
+</testsuite>
+</testsuites>
