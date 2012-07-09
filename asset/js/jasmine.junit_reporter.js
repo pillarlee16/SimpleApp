@@ -181,7 +181,7 @@
 
             // Either remove or escape invalid XML characters
             if (isFilename) {
-                return fullName.replace(/[^\w]/g, "");
+                return fullName.replace(/[^\w.]/g, "");
             }
             return escapeInvalidXmlChars(fullName);
         },

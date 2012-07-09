@@ -3,28 +3,46 @@
     <target name="clean">
         <delete includeemptydirs="true">
             <fileset dir="build" includes="**/*" />
+            <fileset dir="dist" includes="**/*" />
         </delete>
-    	<delete dir="build/src-copy" />
-    	<delete dir="build/test" />
+        <delete dir="build/app" />
+        <delete dir="build/src-copy" />
+        <delete dir="build/test" />
     </target>
+
 	<target name="coverage" depends="clean">
 		<delete dir="build/src-copy" />
 		<mkdir dir="build/src-copy" />
-		<exec executable="asset/lib/jscoverage/jscoverage">
+		<exec executable="/home/redmine/jscoverage/bin/jscoverage">
+			<arg value="--verbose" />
 	        <arg value="app/backbone-require" />
 	        <arg value="build/src-copy" />
 	    </exec>
 	</target>
+	
 	<target name="test" depends="coverage">
 		<delete dir="build/test/report" />
 		<mkdir dir="build/test/report" />
 		<mkdir dir="build/test/report/cobertura" />
 		<mkdir dir="build/test/report/junit" />
 		<exec executable="sh" failonerror="true">
-			<arg value="/home/redmine/phantomjs/bin/run.sh" />
+            <arg value="/home/redmine/phantomjs/bin/run.sh" />
             <arg value="test/run-jasmine.js" />
             <arg value="test/phantom.html" />
         </exec>
 	</target>
-	<target name="install" />
+
+    <target name="build" depends="clean">
+        <exec executable="/home/redmine/node/bin/node">
+            <arg value="asset/js/r.js" />
+            <arg value="-o" />
+            <arg value="app/backbone-require/build.js" />
+        </exec>
+    </target>
+    
+    <target name="dist" depends="build">
+        <copy file="build/app/app.backbone.js" tofile="dist/simpleapp.js" />
+    </target>
+    
+    <target name="install" depends="clean, coverage, test, build, dist" />
 </project>

@@ -112,7 +112,7 @@
             coverageXml.push('<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">');
             coverageXml.push('<coverage line-rate="'+totals['coverage']+'" lines-covered="'+totals['executed']+'" lines-valid="'+totals['statements']+'">');
             coverageXml.push('<sources>');
-            coverageXml.push('<source>/home/redmine/.hudson/jobs/LoggingScript/workspace/src</source>');
+            coverageXml.push('<source>/home/redmine/.hudson/jobs/SimpleApp/workspace/app/backbone-require</source>');
             coverageXml.push('<source>--source</source>');
             coverageXml.push('</sources>');
             coverageXml.push('<packages>');
