@@ -1,0 +1,65 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Simple App - Backbone.js</title>
+		
+		<link href="../../asset/css/bootstrap.css" rel="stylesheet" />
+		<link href="../../asset/css/bootstrap-responsive.css" rel="stylesheet" />
+		
+		<script src="../../asset/js/jquery-1.7.2.js"></script>
+		<script src="../../asset/js/underscore.js"></script>
+		<script src="../../asset/js/backbone.js"></script>
+		<script src="../../asset/js/bootstrap.js"></script>
+
+		</head>
+<body>
+
+<p><h1>Simple App - Backbone.js - module</h1></p>
+
+<div id="data-input">
+</div>
+
+<div id="data-list">
+</div>
+
+<script type="text/template" id="data-input-template">
+	<form class="well form-inline">
+		<input type="text" name="name" class="input-small" placeholder="Name">
+		<input type="text" name="part" class="input-small" placeholder="Part">
+		<button type="button" class="btn add_btn">Add</button>
+	</form>
+</script>
+
+<script type="text/template" id="data-list-template">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Part</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+</script>
+
+<script type="text/template" id="data-record-template">
+	<td><%=id%></td>
+	<td><%=name%></td>
+	<td><%=part%></td>
+	<td><button type="button" class="btn delete_btn">Delete</button>
+</script>
+
+
+<script src="model/Person.js"></script>
+<script src="collection/PersonList.js"></script>
+<script src="view/DataInputView.js"></script>
+<script src="view/DataListView.js"></script>
+<script src="view/DataRecordView.js"></script>
+<script src="app.backbone.js"></script>
+		
+</body>
+</html>

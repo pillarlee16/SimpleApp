@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="SimpleApp">
+    <property name="app_dir" value="app" />
+    <property name="asset_dir" value="asset" />
+    <property name="build_dir" value="build" />
+    <property name="dist_dir" value="dist" />
+    <property name="test_dir" value="test" />
+    
+    <property name="jscoverage_home" value="asset/lib/jscoverage/" />
+    <property name="phantomjs_home" value="asset/lib/phantomjs/" />
+    <property name="node_home" value="asset/lib/node/" />
+    
+    <target name="clean">
+        <delete includeemptydirs="true">
+            <fileset dir="${build_dir}" includes="**/*" />
+            <fileset dir="${dist_dir}" includes="**/*" />
+        </delete>
+        <delete dir="${build_dir}/app" />
+        <delete dir="${build_dir}/src-copy" />
+        <delete dir="${build_dir}/test" />
+    </target>
+
+    <target name="coverage" depends="clean">
+        <delete dir="${build_dir}/src-copy" />
+        <mkdir dir="${build_dir}/src-copy" />
+        <exec executable="${jscoverage_home}/jscoverage">
+            <arg value="--verbose" />
+            <arg value="app/backbone-require" />
+            <arg value="${build_dir}/src-copy" />
+        </exec>
+    </target>
+
+    <target name="test" depends="coverage">
+        <delete dir="${build_dir}/test/report" />
+        <mkdir dir="${build_dir}/test/report" />
+        <mkdir dir="${build_dir}/test/report/cobertura" />
+        <mkdir dir="${build_dir}/test/report/junit" />
+        <exec executable="${phantomjs_home}/phantomjs" failonerror="true">
+            <arg value="${test_dir}/run-jasmine.js" />
+            <arg value="${test_dir}/phantom.html" />
+        </exec>
+    </target>
+    
+    <target name="build" depends="clean">
+        <exec executable="${node_home}/node">
+            <arg value="${asset_dir}/js/r.js" />
+            <arg value="-o" />
+            <arg value="${app_dir}/backbone-require/build.js" />
+        </exec>
+    </target>
+    
+    <target name="dist" depends="build">
+        <copy file="${build_dir}/app/app.backbone.js" tofile="${dist_dir}/simpleapp.js" />
+    </target>
+    
+    <target name="install" depends="clean, coverage, test, build, dist" />
+</project>
