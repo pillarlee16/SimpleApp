@@ -137,4 +137,4 @@ JSCoverage를 사용하여 소스 코드를 복사하고, PhantomJS를 사용하
 SimpleApp을 데모로 사용하여 자바스크립트 개발에 대한 세미나를 두 차례에 걸쳐 진행하였다. 세미나에 사용했던 발표자료를 링크해놓으니 필요할 경우 참조하면 도움이 될 것 같다.
 
 * [대규모 자바스크립트 웹어플리케이션 개발하기](http://pillarlee16.github.com/SimpleApp/how-to-develope-a-large-scale-javascript-web-application.pdf)
-* [자바스크립트 프로젝트의 단위 테스트, 테스트 커버리지 그리고 CI](http://pillarlee16.githbu.com/SimpleApp/javascript-project-unit-test-test-coverage-and-ci.pdf)
+* [자바스크립트 프로젝트의 단위 테스트, 테스트 커버리지 그리고 CI](http://pillarlee16.github.com/SimpleApp/javascript-project-unit-test-test-coverage-and-ci.pdf)
